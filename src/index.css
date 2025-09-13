@@ -126,10 +126,10 @@
 @layer utilities {
   /* Vexio Custom Utilities */
   .vexio-container1 {
-    @apply max-w-[50%] mx-auto px-4;
+    @apply w-full mx-auto px-4 sm:px-6 max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg;
   }
   .vexio-container2 {
-    @apply max-w-[70%] mx-auto px-4;
+    @apply w-full mx-auto px-4 sm:px-6 max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl;
   }
   
   .vexio-card {
