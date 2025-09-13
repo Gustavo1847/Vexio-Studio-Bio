@@ -6,7 +6,8 @@ import { Switch } from '@/components/ui/switch';
 import { 
   MessageCircle, 
   Bot, 
-  Calendar, 
+  Calendar,
+  Calculator, 
   TrendingUp, 
   Star, 
   Instagram, 
@@ -17,7 +18,8 @@ import {
   Zap,
   Clock,
   CheckCircle,
-  Heart
+  Heart,
+  Globe
 } from 'lucide-react';
 
 declare global {
@@ -42,34 +44,40 @@ const VexioLanding = () => {
       primary: true
     },
     {
-      title: "ChatVexio (demo)",
-      description: "Veja nossa IA em ação",
-      icon: Bot,
+      title: "Calculadora de Lucro",
+      description: "Veja quanto dinheiro você está deixando na mesa todo mês por não ter automação",
+      icon: Calculator,
       url: "#"
     },
     {
-      title: "Serviços e Preços",
-      description: "Conheça nossos planos",
-      icon: TrendingUp,
-      url: "#"
-    },
-    {
-      title: "Benefícios e Resultados",
-      description: "Cases de sucesso",
-      icon: CheckCircle,
-      url: "#"
-    },
-    {
-      title: "Agendar apresentação",
-      description: "Google Meet gratuito",
+      title: "Guia Personalizado de Conteúdo",
+      description: "Receba 10 ideias de posts prontos para atrair pacientes sem depender de convênios",
       icon: Video,
       url: "#"
     },
     {
-      title: "Instagram @vexiostudio",
+      title: "Diagnóstico de Comunicação Digital",
+      description: "Receba um diagnóstico grátis da comunicação do seu consultório e descubra o que está afastando pacientes",
+      icon: CheckCircle,
+      url: "#"
+    },
+    {
+      title: "Planejamento de Captação de Pacientes",
+      description: "Descubra como atrair mais pacientes em 30 dias com um plano feito sob medida para seu consultório",
+      icon: TrendingUp,
+      url: "#"
+    },
+    {
+      title: "@studiovexio",
       description: "Siga nosso conteúdo",
       icon: Instagram,
-      url: "https://instagram.com/vexiostudio"
+      url: "https://instagram.com/studiovexio",
+    },
+    {
+      title: "Site",
+      description: "www.vexiostudio.com.br",
+      icon: Globe,
+      url: "https://www.vexiostudio.com.br"
     },
     {
       title: "E-mail",
@@ -81,22 +89,25 @@ const VexioLanding = () => {
 
   const testimonials = [
     {
-      name: "Dr. Carlos Silva",
-      specialty: "Dentista",
-      text: "Reduzi 70% das ligações desnecessárias. A IA resolve tudo!",
-      rating: 5
+      name: "Dr. Laudenice Lucena",
+      specialty: "Clínica Odontológica",
+      text: "A IA da Vexio revolucionou nosso atendimento. Reduzimos 70% das faltas e aumentamos 200% os agendamentos pelo WhatsApp.",
+      rating: 5,
+      image: "/DraLaudenice.jpeg"
+    },
+    {
+      name: "Dr. Roberto Lima",
+      specialty: "Clínica Médica",
+      text: "O sistema da Vexio é muito intuitivo e o suporte é excepcional. Nossa receita aumentou 40% após a implementação.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop&crop=face"
     },
     {
       name: "Dra. Ana Costa",
-      specialty: "Médica",
-      text: "Minhas confirmações aumentaram 150%. Fantástico!",
-      rating: 5
-    },
-    {
-      name: "Dr. João Santos",
-      specialty: "Odontologista",
-      text: "Setup em 1 dia. Melhor investimento que já fiz.",
-      rating: 5
+      specialty: "Clínica Dermatológica",
+      text: "Incrível como a automação nos deu mais tempo para focar no que realmente importa: nossos pacientes. Recomendo totalmente!",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face"
     }
   ];
 
@@ -214,13 +225,19 @@ const VexioLanding = () => {
   return (
     <div className="min-h-screen font-system">
       {/* Header */}
-      <header className="vexio-container py-6">
+      <header className="vexio-container1 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img 
-              src="/logo-vexio.png" 
+              src="/logo-vexio-claro.png" 
               alt="Vexio Studio - Automação com IA para clínicas" 
-              className="h-8 w-auto"
+              className="h-8 w-auto block dark:hidden"
+              loading="eager"
+            />
+            <img
+              src="/logo-vexio-escuro.png"
+              alt="Vexio Studio - Automação com IA para clínicas"
+              className="h-8 w-auto hidden dark:block"
               loading="eager"
             />
           </div>
@@ -239,10 +256,10 @@ const VexioLanding = () => {
 
       <main>
         {/* Hero Section */}
-        <section ref={heroRef} className="vexio-container py-12">
+        <section ref={heroRef} className="vexio-container1 py-6">
           <div className="text-center">
             <div className="hero-avatar mb-6">
-              <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary to-primary-hover rounded-full flex items-center justify-center shadow-vexio">
+              <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary to-primary-hover rounded-full flex items-center justify-center shadow-vexio">
                 <Bot className="w-12 h-12 text-white" />
               </div>
             </div>
@@ -251,14 +268,11 @@ const VexioLanding = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
                 Automação com IA para clínicas
               </h1>
-              <p className="text-lg text-muted-foreground font-medium">
-                médicas e odontológicas
-              </p>
             </div>
             
             <div className="hero-subtitle mb-8">
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Agendamentos automáticos via WhatsApp, confirmações e respostas 24/7.
+                Agendamentos automáticos via WhatsApp, reagendamento, confirmação e cancelamento 24/7
               </p>
             </div>
 
@@ -298,7 +312,7 @@ const VexioLanding = () => {
                 className="vexio-button-secondary"
                 asChild
               >
-                <a href="#como-funciona">
+                <a href="https://www.vexiostudio.com.br/#services">
                   <Zap className="w-5 h-5" />
                   Ver como funciona
                 </a>
@@ -308,60 +322,64 @@ const VexioLanding = () => {
         </section>
 
         {/* Benefits Banner */}
-        <section className="vexio-container mb-12">
+        <section className="vexio-container1 mb-12">
           <div className="vexio-card bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
             <div className="flex flex-wrap items-center justify-center gap-6 text-center">
               <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-primary" />
-                <span className="font-medium">Setup em 24h</span>
+                <CheckCircle className="w-5 h-5 text-primary" />
+                <span className="font-medium">Garantia de Satisfação</span>
               </div>
               <div className="flex items-center gap-2">
                 <Heart className="w-5 h-5 text-primary" />
-                <span className="font-medium">Suporte completo</span>
+                <span className="font-medium">100% Personalizado</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-primary" />
-                <span className="font-medium">Sem fidelidade</span>
+                <Clock className="w-5 h-5 text-primary" />
+                <span className="font-medium">Suporte 24h</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Links Section */}
-        <section ref={cardsRef} className="vexio-container pb-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <section ref={cardsRef} className="vexio-container2 pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch auto-rows-[1fr]">
             {links.map((link, index) => {
               const Icon = link.icon;
               return (
                 <Card 
                   key={index} 
-                  className={`link-card vexio-card cursor-pointer transition-all duration-300 hover:scale-[1.01] ${
-                    link.primary ? 'ring-2 ring-primary/20 bg-gradient-to-br from-primary/5 to-primary/10' : ''
-                  }`}
+                  className={
+                    `link-card vexio-card cursor-pointer h-full transition-all duration-300 hover:scale-[1.05] 
+                    ${ link.primary ? 'ring-2 ring-primary/20 bg-gradient-to-br from-primary/5 to-primary/10' : '' }
+                  `}
                 >
-                  <CardContent className="p-6">
-                    <a 
-                      href={link.url}
-                      target={link.url.startsWith('http') ? '_blank' : '_self'}
-                      rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="flex items-center gap-4 no-underline"
-                      aria-label={`${link.title} - ${link.description}`}
-                    >
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                        link.primary ? 'bg-primary text-white' : 'bg-muted'
-                      }`}>
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-foreground mb-1">
-                          {link.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">
-                          {link.description}
-                        </p>
-                      </div>
-                    </a>
-                  </CardContent>
+                  {/* wrapper para o efeito hover */}
+                  <div className="h-full transform-gpu transition-transform duration-300 hover:scale-[1.05]">
+                    <CardContent className="p-6 h-full flex items-center">
+                      <a 
+                        href={link.url}
+                        target={link.url.startsWith('http') ? '_blank' : '_self'} 
+                        rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined} 
+                        className="flex items-center gap-4 no-underline" 
+                        aria-label={`${link.title} - ${link.description}`}
+                        >
+                        <div className={`w-20 h-20 rounded-xl flex items-center justify-center ${
+                          link.primary ? 'bg-primary text-white' : 'bg-muted'
+                        }`}>
+                          <Icon className="w-10 h-10" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-foreground mb-1">
+                            {link.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {link.description}
+                          </p>
+                        </div>
+                      </a>
+                    </CardContent>
+                  </div>
                 </Card>
               );
             })}
@@ -369,8 +387,8 @@ const VexioLanding = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="vexio-container pb-12">
-          <h2 className="text-2xl font-bold text-center mb-8">O que dizem nossos clientes</h2>
+        <section className="vexio-container2 pb-12">
+          <h2 className="text-2xl font-bold text-center text-neutral-700 dark:text-neutral-700 mb-8">O que dizem nossos clientes</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="vexio-card">
@@ -386,6 +404,11 @@ const VexioLanding = () => {
                   <div>
                     <p className="font-semibold text-foreground">{testimonial.name}</p>
                     <p className="text-xs text-muted-foreground">{testimonial.specialty}</p>
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name} 
+                      className="w-12 h-12 rounded-full mx-auto mt-4 object-cover"
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -395,15 +418,24 @@ const VexioLanding = () => {
       </main>
 
       {/* Footer */}
-      <footer className="vexio-container py-8 border-t border-border">
-        <div className="text-center text-sm text-muted-foreground space-y-2">
+      <footer className="vexio-container2 py-8 border-t border-border">
+        <div className="text-center text-sm text-black space-y-2">
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="#" className="hover:text-foreground transition-colors">Política de Privacidade</a>
-            <a href="#" className="hover:text-foreground transition-colors">Termos de Uso</a>
-            <span>CNPJ: 00.000.000/0001-00</span>
+            <a href="#" className="hover:cursor-pointer">Política de Privacidade</a>
+            <a href="#" className="hover:cursor-pointer">Termos de Uso</a>
+            <span>CNPJ: 61.322.556/0001-99</span>
           </div>
-          <p>© 2024 Vexio Studio. Todos os direitos reservados.</p>
+          <span>© 2024 </span>
+          <a href="https://www.vexiostudio.com.br" className="hover:cursor-pointer">Vexio Studio</a>
+          <span>. Todos os direitos reservados.</span>
         </div>
+        <div className="flex items-center justify-center m-4">
+            <img 
+              src="https://www.vexiostudio.com.br/logo-preto.png" 
+              alt="Vexio Studio" 
+              className="h-8 w-auto"
+            />
+          </div>
       </footer>
     </div>
   );

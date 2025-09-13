@@ -7,8 +7,8 @@
 @layer base {
   :root {
     /* Vexio Brand Colors */
-    --vexio-primary: 14 100% 61%; /* #FF6A3D */
-    --vexio-primary-hover: 14 100% 53%; /* Darker for hover */
+    --vexio-primary: #ff824d; /* #ff824d */
+    --vexio-primary-hover: 14 100% 61%; /* Darker for hover */
     --vexio-text-main: 211 25% 22%; /* #1F2937 */
     --vexio-text-secondary: 215 14% 46%; /* #6B7280 */
     --vexio-bg-light: 25 100% 97%; /* #FFF6F2 */
@@ -125,8 +125,11 @@
 
 @layer utilities {
   /* Vexio Custom Utilities */
-  .vexio-container {
-    @apply max-w-[720px] mx-auto px-4;
+  .vexio-container1 {
+    @apply max-w-[50%] mx-auto px-4;
+  }
+  .vexio-container2 {
+    @apply max-w-[70%] mx-auto px-4;
   }
   
   .vexio-card {
@@ -134,7 +137,7 @@
   }
   
   .vexio-card:hover {
-    @apply shadow-[var(--vexio-shadow-hover)] scale-[1.01];
+    @apply shadow-[var(--vexio-shadow-hover)] scale-[1.05];
   }
   
   .vexio-button-primary {
