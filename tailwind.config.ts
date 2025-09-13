@@ -22,6 +22,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          hover: "hsl(var(--vexio-primary-hover))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -47,6 +48,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        vexio: {
+          primary: "hsl(var(--vexio-primary))",
+          hover: "hsl(var(--vexio-primary-hover))",
+          text: "hsl(var(--vexio-text-main))",
+          secondary: "hsl(var(--vexio-text-secondary))",
+          bg: "hsl(var(--vexio-bg-light))",
+          surface: "hsl(var(--vexio-surface))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -65,25 +74,42 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "vexio-fade-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "vexio-scale-in": {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "vexio-pulse": {
+          "0%, 100%": { 
+            transform: "scale(1)",
+            boxShadow: "0 0 0 0 rgba(255, 106, 61, 0.4)"
           },
-          to: {
-            height: "0",
+          "50%": { 
+            transform: "scale(1.02)",
+            boxShadow: "0 0 0 10px rgba(255, 106, 61, 0)"
           },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "vexio-fade-up": "vexio-fade-up 0.6s ease-out",
+        "vexio-scale-in": "vexio-scale-in 0.4s ease-out",
+        "vexio-pulse": "vexio-pulse 6s ease-in-out infinite",
+      },
+      boxShadow: {
+        'vexio': 'var(--vexio-shadow)',
+        'vexio-hover': 'var(--vexio-shadow-hover)',
       },
     },
   },
