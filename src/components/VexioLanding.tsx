@@ -40,32 +40,32 @@ const VexioLanding = () => {
       title: "Teste a IA agora",
       description: "Converse com nossa IA no WhatsApp",
       icon: MessageCircle,
-      url: "https://wa.me/5583982210377?text=Olá%20Vexio!%20Quero%20automatizar%20meu%20atendimento.",
+      url: "https://bot.vexio.app.br/demonstracao",
       primary: true
     },
     {
       title: "Calculadora de Lucro",
       description: "Veja quanto dinheiro você está deixando na mesa todo mês por não ter automação",
       icon: Calculator,
-      url: "#"
+      url: "https://bot.vexio.app.br/calculadora-lucro"
     },
     {
       title: "Guia Personalizado de Conteúdo",
       description: "Receba 10 ideias de posts prontos para atrair pacientes sem depender de convênios",
       icon: Video,
-      url: "#"
+      url: "https://bot.vexio.app.br/guia-personalizado-conteudo"
     },
     {
       title: "Diagnóstico de Comunicação Digital",
       description: "Receba um diagnóstico grátis da comunicação do seu consultório e descubra o que está afastando pacientes",
       icon: CheckCircle,
-      url: "#"
+      url: "https://bot.vexio.app.br/diagnostico-comunicacao-digital"
     },
     {
       title: "Planejamento de Captação de Pacientes",
       description: "Descubra como atrair mais pacientes em 30 dias com um plano feito sob medida para seu consultório",
       icon: TrendingUp,
-      url: "#"
+      url: "https://bot.vexio.app.br/planejamento-captacao-pacientes"
     },
     {
       title: "@studiovexio",
@@ -293,7 +293,7 @@ const VexioLanding = () => {
                 className="primary-cta vexio-button-primary text-lg px-8 py-4 relative overflow-hidden group"
               >
                 <a 
-                  href="https://wa.me/5583982210377?text=Olá%20Vexio!%20Quero%20automatizar%20meu%20atendimento."
+                  href="https://wa.me/5583986222218?text=Olá%20Vexio!%20Quero%20automatizar%20meu%20atendimento."
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Falar no WhatsApp - Contato direto com Vexio"
