@@ -293,7 +293,7 @@ const VexioLanding = () => {
                 className="primary-cta vexio-button-primary text-lg px-8 py-4 relative overflow-hidden group"
               >
                 <a 
-                  href="https://wa.me/5583986222218?text=Olá%20Vexio!%20Quero%20automatizar%20meu%20atendimento."
+                  href="https://wa.me/558387146549?text=Olá%20Vexio!%20Quero%20automatizar%20meu%20atendimento."
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Falar no WhatsApp - Contato direto com Vexio"
