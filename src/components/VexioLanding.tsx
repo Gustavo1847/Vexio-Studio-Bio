@@ -7,6 +7,9 @@ import {
   MessageCircle, 
   Bot, 
   Calendar,
+  CalendarCheck, 
+  FileSearch,
+  CheckCheck,
   Calculator, 
   TrendingUp, 
   Star, 
@@ -19,7 +22,8 @@ import {
   Clock,
   CheckCircle,
   Heart,
-  Globe
+  Globe,
+  Target
 } from 'lucide-react';
 
 declare global {
@@ -44,28 +48,16 @@ const VexioLanding = () => {
       primary: true
     },
     {
-      title: "Calculadora de Lucro",
-      description: "Veja quanto dinheiro você está deixando na mesa todo mês por não ter automação",
-      icon: Calculator,
-      url: "https://bot.vexio.app.br/calculadora-lucro"
+      title: "Consultoria Gratuita",
+      description: "Agende uma consultoria com nossa equipe para entender como automatizar seu consultório",
+      icon: CalendarCheck,
+      url: "https://form.vexio.app.br/forms/agendamento-consultoria-gratis"
     },
     {
-      title: "Guia Personalizado de Conteúdo",
-      description: "Receba 10 ideias de posts prontos para atrair pacientes sem depender de convênios",
-      icon: Video,
-      url: "https://bot.vexio.app.br/guia-personalizado-conteudo"
-    },
-    {
-      title: "Diagnóstico de Comunicação Digital",
-      description: "Receba um diagnóstico grátis da comunicação do seu consultório e descubra o que está afastando pacientes",
-      icon: CheckCircle,
-      url: "https://bot.vexio.app.br/diagnostico-comunicacao-digital"
-    },
-    {
-      title: "Planejamento de Captação de Pacientes",
-      description: "Descubra como atrair mais pacientes em 30 dias com um plano feito sob medida para seu consultório",
-      icon: TrendingUp,
-      url: "https://bot.vexio.app.br/planejamento-captacao-pacientes"
+      title: "Diagnóstico de Otimização de Atendimento",
+      description: "Acesse gratuitamente O Diagnóstico do Caos Oculto e descubra como e onde otimizar seu atendimento.",
+      icon: FileSearch,
+      url: "https://drive.google.com/file/d/1a6rUXruyvrl_cO2vfz0sVoC3QV1oDatI/view?usp=sharing"
     },
     {
       title: "@studiovexio",
@@ -84,6 +76,34 @@ const VexioLanding = () => {
       description: "contato@vexiostudio.com.br",
       icon: Mail,
       url: "mailto:contato@vexiostudio.com.br"
+    },
+    {
+      title: "Planejamento de Captação de Pacientes",
+      description: "Descubra como atrair mais pacientes em 30 dias com um plano perfeito para seu consultório",
+      icon: Target,
+      url: "https://bot.vexio.app.br/planejamento-captacao-pacientes",
+      disabled: true
+    },
+    {
+      title: "Calculadora de Lucro",
+      description: "Veja quanto dinheiro você está deixando na mesa todo mês por não ter automação",
+      icon: Calculator,
+      url: "https://bot.vexio.app.br/calculadora-lucro",
+      disabled: true
+    },
+    {
+      title: "Guia Personalizado de Conteúdo",
+      description: "Receba 10 ideias de posts prontos para atrair pacientes sem depender de convênios",
+      icon: Video,
+      url: "https://bot.vexio.app.br/guia-personalizado-conteudo",
+      disabled: true
+    },
+    {
+      title: "Diagnóstico de Comunicação Digital",
+      description: "Receba um diagnóstico grátis da comunicação do seu consultório e descubra o que está afastando pacientes",
+      icon: CheckCheck,
+      url: "https://bot.vexio.app.br/diagnostico-comunicacao-digital",
+      disabled: true
     }
   ];
 
@@ -346,38 +366,60 @@ const VexioLanding = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch auto-rows-[1fr]">
             {links.map((link, index) => {
               const Icon = link.icon;
+              const isDisabled = !!link.disabled;
+
               return (
-                <Card 
-                  key={index} 
-                  className={
-                    `link-card vexio-card cursor-pointer h-full transition-all duration-300 hover:scale-[1.05] 
-                    ${ link.primary ? 'ring-2 ring-primary/20 bg-gradient-to-br from-primary/5 to-primary/10' : '' }
+                <Card
+                  key={index}
+                  className={`
+                    link-card vexio-card h-full transition-all duration-300
+                    ${ isDisabled ? 'pointer-events-none opacity-60 filter grayscale' : 'cursor-pointer hover:scale-[1.05]' }
+                    ${ link.primary && !isDisabled ? 'ring-2 ring-primary/20 bg-gradient-to-br from-primary/5 to-primary/10' : '' }
                   `}
+                  aria-disabled={isDisabled}
+                  role="group"
                 >
-                  {/* wrapper para o efeito hover */}
-                  <div className="h-full transform-gpu transition-transform duration-300 hover:scale-[1.05]">
-                    <CardContent className="p-6 h-full flex items-center">
-                      <a 
-                        href={link.url}
-                        target={link.url.startsWith('http') ? '_blank' : '_self'} 
-                        rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined} 
-                        className="flex items-center gap-4 no-underline" 
-                        aria-label={`${link.title} - ${link.description}`}
+                  <div className={`h-full transform-gpu transition-transform duration-300 ${isDisabled ? '' : 'hover:scale-[1.05]'}`}>
+                    <CardContent className={`p-6 h-full flex items-center relative ${isDisabled ? '' : ''}`}>
+                      {isDisabled ? (
+                        /* render estático quando desabilitado (sem foco/navegação) */
+                        <div className="flex items-center gap-4 w-full" aria-hidden>
+                          <div className="w-20 h-20 rounded-xl flex items-center justify-center bg-muted text-muted-foreground">
+                            <Icon className="w-10 h-10" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-foreground mb-1">{link.title}</h3>
+                            <p className="text-sm text-muted-foreground">{link.description}</p>
+                          </div>
+
+                          <div className="absolute top-4 right-4">
+                            <span className="inline-flex items-center text-xs font-medium px-2 py-1 rounded-full bg-yellow-100 text-yellow-800 border border-yellow-200">
+                              Em breve
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        /* render clicável quando habilitado */
+                        <a
+                          href={link.url}
+                          target={link.url.startsWith('http') ? '_blank' : '_self'}
+                          rel={link.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          className="flex items-center gap-4 no-underline w-full"
+                          aria-label={`${link.title} - ${link.description}`}
                         >
-                        <div className={`w-20 h-20 rounded-xl flex items-center justify-center ${
-                          link.primary ? 'bg-primary text-white' : 'bg-muted'
-                        }`}>
-                          <Icon className="w-10 h-10" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-foreground mb-1">
-                            {link.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {link.description}
-                          </p>
-                        </div>
-                      </a>
+                          <div className={`w-20 h-20 rounded-xl flex items-center justify-center ${ link.primary ? 'bg-primary text-white' : 'bg-muted' }`}>
+                            <Icon className="w-10 h-10" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-foreground mb-1">
+                              {link.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {link.description}
+                            </p>
+                          </div>
+                        </a>
+                      )}
                     </CardContent>
                   </div>
                 </Card>
@@ -421,13 +463,13 @@ const VexioLanding = () => {
       <footer className="vexio-container2 py-8 border-t border-border">
         <div className="text-center text-sm text-black space-y-2">
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="#" className="hover:cursor-pointer">Política de Privacidade</a>
-            <a href="#" className="hover:cursor-pointer">Termos de Uso</a>
+            <a href="#" className="cursor-pointer">Política de Privacidade</a>
+            <a href="#" className="cursor-pointer">Termos de Uso</a>
             <span>CNPJ: 61.322.556/0001-99</span>
           </div>
           <span>© 2024 </span>
-          <a href="https://www.vexiostudio.com.br" className="hover:cursor-pointer">Vexio Studio</a>
-          <span>. Todos os direitos reservados.</span>
+          <a href="https://www.vexiostudio.com.br" className="cursor-pointer">Vexio Studio</a>
+          <span> - Todos os direitos reservados</span>
         </div>
         <div className="flex items-center justify-center m-4">
             <img 
