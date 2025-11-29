@@ -51,13 +51,13 @@ const VexioLanding = () => {
       title: "Consultoria Gratuita",
       description: "Agende uma consultoria com nossa equipe para entender como automatizar seu consultório",
       icon: CalendarCheck,
-      url: "https://cal.com/vexio-studio/consultoria-gratuita"
+      url: "https://agenda.vexio.app.br/"
     },
     {
       title: "Diagnóstico de Otimização de Atendimento",
       description: "Acesse gratuitamente O Diagnóstico do Caos Oculto e descubra como e onde otimizar seu atendimento.",
       icon: FileSearch,
-      url: "https://drive.google.com/file/d/1gfQJelx_JZdMEaKkf08wPBcTq8xOlg72/view?usp=sharing"
+      url: "https://vexiostudio.com.br/ebook-diagnostico"
     },
     {
       title: "@studiovexio",
